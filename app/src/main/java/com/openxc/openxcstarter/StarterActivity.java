@@ -117,4 +117,9 @@ public class StarterActivity extends Activity {
         getMenuInflater().inflate(R.menu.starter, menu);
         return true;
     }
+
+    public void aRandomMethod() {
+        int a;
+        a = 10;
+    }
 }
