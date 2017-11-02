@@ -5,8 +5,3 @@ This is a android application project that assist driver from the begining of th
 
 This version of the project requires v6.1.6 or later of the OpenXC Android
 library.
-
-## License
-
-Copyright (c) 2011-2013 Ford Motor Company
-Licensed under the BSD license.
