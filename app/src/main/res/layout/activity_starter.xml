@@ -6,27 +6,167 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    tools:context="com.openxc.openxcstarter.StarterActivity" >
  
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:text="@string/hello_world"
+        android:visibility="invisible"/>
     
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
-        android:id="@+id/engine_speed" />
+        android:id="@+id/engine_speed"
+        android:text="@string/engine_speed"
+        android:visibility="invisible"/>
 
-    <Button
-        android:id="@+id/startButton"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/engine_speed"
+        android:id="@+id/ignition_status"
+        android:text="@string/ignition_status"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ignition_status"
+        android:id="@+id/brake_pedal"
+        android:text="@string/brake_pedal"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/brake_pedal"
+        android:id="@+id/hand_brake"
+        android:text="@string/hand_brake"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hand_brake"
+        android:id="@+id/gear_mode"
+        android:text="@string/gear_mode"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gear_mode"
+        android:id="@+id/headlamp"
+        android:text="@string/headlamp"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headlamp"
+        android:id="@+id/vehicle_speed"
+        android:text="@string/vehicle_speed_info"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/main_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:text="Start"
-        android:onClick="aRandomMethod"/>
+        android:background="@android:color/transparent"
+        android:text="@string/start"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button_seat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:text="@string/seat_info"
+        android:background="@android:color/transparent"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/button_mirror"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:text="@string/mirror_info"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/button_seatbelt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:text="@string/seatbelt_info"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/brake"
+        android:background="@android:color/transparent"
+        android:text="@string/brake_info"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/lamp"
+        android:background="@android:color/transparent"
+        android:text="@string/lamp_info"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/handbrake"
+        android:background="@android:color/transparent"
+        android:text="@string/handbrake_info"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/gear"
+        android:background="@android:color/transparent"
+        android:text="@string/gear_info"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/ready"
+        android:background="@android:color/transparent"
+        android:text="@string/ready"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
 
 </RelativeLayout>
