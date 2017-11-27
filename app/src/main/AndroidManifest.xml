@@ -25,7 +25,8 @@
 
         <service android:name="com.openxc.VehicleManager" />
 
-        <activity android:name="com.openxc.openxcstarter.TripActivity"></activity>
+        <activity android:name="com.openxc.openxcstarter.TripActivity" />
+        <activity android:name="com.openxc.openxcstarter.FinisherActivity"></activity>
     </application>
 
 </manifest>

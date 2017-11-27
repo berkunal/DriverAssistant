@@ -10,6 +10,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +39,19 @@ public class TripActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip);
+        Button endButton = (Button) findViewById(R.id.end_button);
+        endButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if ( vSpeed > 1 ) {
+                    Toast.makeText(getApplicationContext(), "Stop your car first!", Toast.LENGTH_LONG).show();
+                } else {
+                    Intent i = new Intent(getApplicationContext(), FinisherActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+            }
+        });
         mVehicleSpeedView = (TextView) findViewById(R.id.vehicle_speed);
         new safetyWarning().execute(null, null, null);
     }
@@ -74,7 +89,7 @@ public class TripActivity extends Activity {
 
     private class safetyWarning extends AsyncTask<Void, Integer, Void> {
         AlertDialog.Builder builder = new AlertDialog.Builder(TripActivity.this);
-        AlertDialog handbrakeDialog, headlampDialog, brakeGasDialog, aggressiveAccSafetyDialog, aggressiveAccEmissionDialog;
+        AlertDialog handbrakeDialog, headlampDialog, brakeGasDialog, aggressiveAccSafetyDialog, aggressiveAccEmissionDialog, safetyPlusEmissionDialog;
         int flag = 1, i = 0;
         double acc, vSpeedPrev;
 
@@ -97,6 +112,9 @@ public class TripActivity extends Activity {
             builder.setMessage(R.string.aggressive_acc_warning)
                     .setTitle(R.string.emission_warning);
             aggressiveAccEmissionDialog = builder.create();
+            builder.setMessage(R.string.aggressive_acc_warning)
+                    .setTitle(R.string.safety_and_emission_warning);
+            safetyPlusEmissionDialog = builder.create();
         }
 
         @Override
@@ -105,7 +123,7 @@ public class TripActivity extends Activity {
                 // Calculate acceleration
                 acc = (vSpeed - vSpeedPrev)*2;
                 vSpeedPrev = vSpeed;
-                
+
                 // flag == 1 -> no warning
                 // Handbrake during cruse. 0 -> handbrake warning
                 if (( ( vSpeed > 0 || accPedalPosition > 3 ) && parkBrake ) && flag == 1) {
@@ -135,39 +153,93 @@ public class TripActivity extends Activity {
                 }
 
                 // Aggressive acceleration safety warning -> 6
-                if (vSpeed >= 0 && vSpeed < 20 && acc >= 2.16 && flag == 1){
-                    flag = 6;
-                    publishProgress(flag);
-                } else if (vSpeed >= 20 && vSpeed < 30 && acc >= 2.06 && flag == 1) {
-                    flag = 6;
-                    publishProgress(flag);
-                } else if (vSpeed >= 30 && vSpeed < 40 && acc >= 1.96 && flag == 1) {
-                    flag = 6;
-                    publishProgress(flag);
-                } else if (vSpeed >= 40 && vSpeed < 50 && acc >= 1.86 && flag == 1) {
-                    flag = 6;
-                    publishProgress(flag);
-                } else if (vSpeed >= 50 && vSpeed < 70 && acc >= 1.47 && flag == 1) {
-                    flag = 6;
-                    publishProgress(flag);
-                } else if (vSpeed >= 70 && vSpeed < 80 && acc >= 1.37 && flag == 1) {
-                    flag = 6;
-                    publishProgress(flag);
-                } else if (vSpeed >= 80 && acc >= 1.27 && flag == 1) {
-                    flag = 6;
-                    publishProgress(flag);
-                }
-
-                if (flag == 6) {
-                    i++;
-                    if (i == 6){
-                        flag = 7;
-                        i = 0;
+                if (vSpeed >= 0 && vSpeed < 20 && flag == 1){
+                    if (acc >= 2.6) {
+                        // safety + emission warning
+                        flag = 10;
+                        publishProgress(flag);
+                    } else if (acc >= 2.16) {//safety
+                        flag = 6;
+                        publishProgress(flag);
+                    }
+                } else if (vSpeed >= 20 && vSpeed < 30 && flag == 1) {
+                    if (acc >= 2.06) {
+                        // safety + emission warning
+                        flag = 10;
+                        publishProgress(flag);
+                    } else if (acc >= 1.73) {//emission
+                        flag = 8;
+                        publishProgress(flag);
+                    }
+                } else if (vSpeed >= 30 && vSpeed < 40 && flag == 1) {
+                    if (acc >= 1.96) {
+                        // safety + emission warning
+                        flag = 10;
+                        publishProgress(flag);
+                    } else if (acc >= 1.3) {//emission
+                        flag = 8;
+                        publishProgress(flag);
+                    }
+                } else if (vSpeed >= 40 && vSpeed < 50 && flag == 1) {
+                    if (acc >= 1.86) {
+                        // safety + emission warning
+                        flag = 10;
+                        publishProgress(flag);
+                    } else if (acc >= 1.1) {//emission
+                        flag = 8;
+                        publishProgress(flag);
+                    }
+                } else if (vSpeed >= 50 && vSpeed < 70 && flag == 1) {
+                    if (acc >= 1.47) {
+                        // safety + emission warning
+                        flag = 10;
+                        publishProgress(flag);
+                    } else if (acc >= 0.83) {//emission
+                        flag = 8;
+                        publishProgress(flag);
+                    }
+                } else if (vSpeed >= 70 && vSpeed < 80 && flag == 1) {
+                    if (acc >= 1.37) {
+                        // safety + emission warning
+                        flag = 10;
+                        publishProgress(flag);
+                    } else if (acc >= 0.60) {//emission
+                        flag = 8;
+                        publishProgress(flag);
+                    }
+                } else if (vSpeed >= 80 && flag == 1) {
+                    if (acc >= 1.27) {
+                        // safety + emission warning
+                        flag = 10;
+                        publishProgress(flag);
+                    } else if (acc >= 0.55) {//emission
+                        flag = 8;
                         publishProgress(flag);
                     }
                 }
 
-
+                if (flag == 6) {
+                    i++;
+                    if (i == 4){
+                        flag = 7;
+                        i = 0;
+                        publishProgress(flag);
+                    }
+                } else if (flag == 8) {
+                    i++;
+                    if (i == 4){
+                        flag = 9;
+                        i = 0;
+                        publishProgress(flag);
+                    }
+                } else if (flag == 10) {
+                    i++;
+                    if (i == 4){
+                        flag = 11;
+                        i = 0;
+                        publishProgress(flag);
+                    }
+                }
 
                 // Kapılar bozuk :(
                 // Door open warning 6
@@ -202,6 +274,16 @@ public class TripActivity extends Activity {
                 aggressiveAccSafetyDialog.show();
             } else if (values[0] == 7) {
                 aggressiveAccSafetyDialog.dismiss();
+                flag = 1;
+            } else if (values[0] == 8) {
+                aggressiveAccEmissionDialog.show();
+            } else if (values[0] == 9) {
+                aggressiveAccEmissionDialog.dismiss();
+                flag = 1;
+            } else if (values[0] == 10) {
+                safetyPlusEmissionDialog.show();
+            } else if (values[0] == 11) {
+                safetyPlusEmissionDialog.dismiss();
                 flag = 1;
             }
         }
@@ -268,13 +350,13 @@ public class TripActivity extends Activity {
         }
     };
 
-    BrakePedalStatus.Listener mDoorAjarListener = new BrakePedalStatus.Listener() {
+    VehicleDoorStatus.Listener mDoorAjarListener = new VehicleDoorStatus.Listener() {
         @Override
         public void receive(Measurement measurement) {
             final VehicleDoorStatus vehicleDoorStatus = (VehicleDoorStatus) measurement;
             TripActivity.this.runOnUiThread(new Runnable() {
                 public void run() {
-                    doorAjar = vehicleDoorStatus.getValue().toString();
+                    doorAjar = vehicleDoorStatus.getValue().getSerializedValue();
                 }
             });
         }
@@ -284,7 +366,6 @@ public class TripActivity extends Activity {
         public void onServiceConnected(ComponentName className,
                                        IBinder service) {
             Log.i(TAG, "Bound to VehicleManager");
-            Toast.makeText(getApplicationContext(), "Bound to vehicle manager", Toast.LENGTH_SHORT).show();
             mVehicleManager = ((VehicleManager.VehicleBinder) service)
                     .getService();
 
