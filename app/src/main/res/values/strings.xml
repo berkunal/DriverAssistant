@@ -24,6 +24,9 @@
     <string name="weather">9 °C </string>
     <string name="handbrake_warning">Release parking brake!</string>
     <string name="safety_warning">Safety Warning!</string>
+    <string name="emission_warning">Emission Warning!</string>
     <string name="headlamp_warning">Open headlamps!</string>
+    <string name="brake_acc_warning">Don\'t press brake and gas pedal at the same time!</string>
+    <string name="aggressive_acc_warning">Aggressive Acceleration!</string>
 
 </resources>

@@ -336,7 +336,7 @@ public class StarterActivity extends Activity {
     private class vSpeedCheck extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... voids) {
-            while (vSpeed < 5) {
+            while (vSpeed < 2) {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
