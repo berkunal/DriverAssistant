@@ -7,16 +7,44 @@
     tools:context="com.openxc.openxcstarter.FinisherActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="End is near"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/park_brake"
+        android:background="@android:color/transparent"
+        android:text="@string/engage_park_brake"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/headlamp"
+        android:background="@android:color/transparent"
+        android:text="@string/close_headlamp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+    <Button
+        android:id="@+id/button_windows"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:text="@string/windows_reminder"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+    <Button
+        android:id="@+id/button_infotainment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:text="@string/infotainment_reminder"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
 </android.support.constraint.ConstraintLayout>

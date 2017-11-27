@@ -21,7 +21,7 @@ import com.openxc.measurements.BrakePedalStatus;
 import com.openxc.measurements.HeadlampStatus;
 import com.openxc.measurements.Measurement;
 import com.openxc.measurements.ParkingBrakeStatus;
-import com.openxc.measurements.VehicleDoorStatus;
+//import com.openxc.measurements.VehicleDoorStatus;
 import com.openxc.measurements.VehicleSpeed;
 import com.openxcplatform.openxcstarter.R;
 
@@ -33,7 +33,7 @@ public class TripActivity extends Activity {
     private double vSpeed;
     private boolean parkBrake, headLamp, brakePedal;
     private int accPedalPosition;
-    private String doorAjar;
+    // private String doorAjar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,11 +80,16 @@ public class TripActivity extends Activity {
                     mAcceleratorPedalListener);
             mVehicleManager.removeListener(BrakePedalStatus.class,
                     mBrakePedalListener);
-            mVehicleManager.removeListener(VehicleDoorStatus.class,
-                    mDoorAjarListener);
+            // mVehicleManager.removeListener(VehicleDoorStatus.class,
+            //        mDoorAjarListener);
             unbindService(mConnection);
             mVehicleManager = null;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     private class safetyWarning extends AsyncTask<Void, Integer, Void> {
@@ -350,7 +355,7 @@ public class TripActivity extends Activity {
         }
     };
 
-    VehicleDoorStatus.Listener mDoorAjarListener = new VehicleDoorStatus.Listener() {
+    /*VehicleDoorStatus.Listener mDoorAjarListener = new VehicleDoorStatus.Listener() {
         @Override
         public void receive(Measurement measurement) {
             final VehicleDoorStatus vehicleDoorStatus = (VehicleDoorStatus) measurement;
@@ -360,7 +365,7 @@ public class TripActivity extends Activity {
                 }
             });
         }
-    };
+    };*/
 
     private ServiceConnection mConnection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className,
@@ -374,7 +379,7 @@ public class TripActivity extends Activity {
             mVehicleManager.addListener(HeadlampStatus.class, mHeadlampListener);
             mVehicleManager.addListener(AcceleratorPedalPosition.class, mAcceleratorPedalListener);
             mVehicleManager.addListener(BrakePedalStatus.class, mBrakePedalListener);
-            mVehicleManager.addListener(VehicleDoorStatus.class, mDoorAjarListener);
+            // mVehicleManager.addListener(VehicleDoorStatus.class, mDoorAjarListener);
         }
 
         public void onServiceDisconnected(ComponentName className) {
