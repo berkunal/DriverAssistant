@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dim_foreground_material_light"
+    android:keepScreenOn="true"
     tools:context="com.openxc.openxcstarter.TripActivity">
 
     <TextView
@@ -15,13 +16,13 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/sevensd"
         android:text="@string/vehicle_speed"
         android:textColor="@color/accent_material_dark"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/end_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,6 +33,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/sevensd"
         android:text="km/h"
         android:textColor="@color/accent_material_dark"
         android:textSize="20sp"
@@ -50,9 +52,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:format24Hour="hh:mm"
-        android:textSize="30sp"
+        android:textSize="50sp"
         android:textStyle="bold"
         android:textColor="@color/accent_material_dark"
+        android:fontFamily="@font/sevensd"
         app:layout_constraintBottom_toTopOf="@+id/vehicle_speed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,9 +70,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/weather"
-        android:textSize="30sp"
+        android:textSize="50sp"
         android:textStyle="bold"
         android:textColor="@color/accent_material_dark"
+        android:fontFamily="@font/sevensd"
         app:layout_constraintBottom_toTopOf="@+id/end_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,6 +84,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_red_light"
+        android:fontFamily="@font/alegreya_sans"
         android:text="@string/end_trip"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent" />

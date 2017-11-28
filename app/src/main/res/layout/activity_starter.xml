@@ -82,7 +82,8 @@
         android:text="@string/start"
         android:textColor="@color/accent_material_dark"
         android:textSize="40sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans" />
 
     <Button
         android:id="@+id/button_seat"
@@ -94,6 +95,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
     <Button
@@ -106,6 +108,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
     <Button
@@ -118,6 +121,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
     <TextView
@@ -130,6 +134,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
     <TextView
@@ -142,6 +147,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
     <TextView
@@ -154,6 +160,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
     <TextView
@@ -166,6 +173,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
     <TextView
@@ -178,6 +186,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
 </RelativeLayout>

@@ -18,6 +18,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
     <TextView
@@ -30,6 +31,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
     <Button
@@ -42,6 +44,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
     <Button
@@ -54,6 +57,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
     <TextView
@@ -66,6 +70,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
     <Button
@@ -78,6 +83,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
     <Button
@@ -90,6 +96,7 @@
         android:textColor="@color/accent_material_dark"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
         android:visibility="invisible" />
 
 </android.support.constraint.ConstraintLayout>
