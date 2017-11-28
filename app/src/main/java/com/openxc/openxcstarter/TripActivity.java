@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -33,6 +34,7 @@ public class TripActivity extends Activity {
     private double vSpeed;
     private boolean parkBrake, headLamp, brakePedal;
     private int accPedalPosition;
+    private MediaPlayer mp;
     // private String doorAjar;
 
     @Override
@@ -46,6 +48,7 @@ public class TripActivity extends Activity {
                 if ( vSpeed > 1 ) {
                     Toast.makeText(getApplicationContext(), "Stop your car first!", Toast.LENGTH_LONG).show();
                 } else {
+                    mp.release();
                     Intent i = new Intent(getApplicationContext(), FinisherActivity.class);
                     startActivity(i);
                     finish();
@@ -263,30 +266,42 @@ public class TripActivity extends Activity {
             super.onProgressUpdate(values);
             if (values[0] == 0) {
                 handbrakeDialog.show();
+                mp = MediaPlayer.create(getApplicationContext(), R.raw.safety);
+                mp.start();
             } else if (values[0] == 1) {
                 handbrakeDialog.dismiss();
             } else if (values[0] == 2) {
                 headlampDialog.show();
+                mp = MediaPlayer.create(getApplicationContext(), R.raw.safety);
+                mp.start();
             } else if (values[0] == 3) {
                 headlampDialog.dismiss();
                 flag = 1;
             } else if (values[0] == 4) {
                 brakeGasDialog.show();
+                mp = MediaPlayer.create(getApplicationContext(), R.raw.safety);
+                mp.start();
             } else if (values[0] == 5) {
                 brakeGasDialog.dismiss();
                 flag = 1;
             } else if (values[0] == 6) {
                 aggressiveAccSafetyDialog.show();
+                mp = MediaPlayer.create(getApplicationContext(), R.raw.safety);
+                mp.start();
             } else if (values[0] == 7) {
                 aggressiveAccSafetyDialog.dismiss();
                 flag = 1;
             } else if (values[0] == 8) {
                 aggressiveAccEmissionDialog.show();
+                mp = MediaPlayer.create(getApplicationContext(), R.raw.safety);
+                mp.start();
             } else if (values[0] == 9) {
                 aggressiveAccEmissionDialog.dismiss();
                 flag = 1;
             } else if (values[0] == 10) {
                 safetyPlusEmissionDialog.show();
+                mp = MediaPlayer.create(getApplicationContext(), R.raw.safety);
+                mp.start();
             } else if (values[0] == 11) {
                 safetyPlusEmissionDialog.dismiss();
                 flag = 1;

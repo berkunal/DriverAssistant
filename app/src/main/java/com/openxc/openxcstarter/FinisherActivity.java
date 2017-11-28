@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.openxc.VehicleManager;
 import com.openxc.measurements.HeadlampStatus;
+import com.openxc.measurements.IgnitionStatus;
 import com.openxc.measurements.Measurement;
 import com.openxc.measurements.ParkingBrakeStatus;
 import com.openxcplatform.openxcstarter.R;
@@ -23,6 +25,8 @@ public class FinisherActivity extends Activity {
     private static final String TAG = "StarterActivity";
     private VehicleManager mVehicleManager;
     private boolean parkBrake, headLamp;
+    private String ignStatus;
+    private MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,8 @@ public class FinisherActivity extends Activity {
                     mHeadlampListener);
             mVehicleManager.removeListener(ParkingBrakeStatus.class,
                     mParkBrakeListener);
+            mVehicleManager.removeListener(IgnitionStatus.class,
+                    mIgnitionListener);
             unbindService(mConnection);
             mVehicleManager = null;
         }
@@ -71,13 +77,11 @@ public class FinisherActivity extends Activity {
         @Override
         protected Void doInBackground(Void... voids) {
             while (stage != 8){
-                Log.w(TAG, "stage: " + stage);
                 if (stage == 0){ // Park brake
                     if (parkBrake) {
                         publishProgress(stage);
                     }
                 } else if (stage == 1) { // Headlamp
-                    Log.w(TAG, "Burada mıyız?");
                     if (!headLamp) {
                         publishProgress(stage);
                     }
@@ -89,15 +93,35 @@ public class FinisherActivity extends Activity {
                             publishProgress(stage);
                         }
                     });
-                } /*else if (stage == 3) { // Infotainment
-
+                } else if (stage == 3) { // Infotainment
+                    Button windowsButton = (Button) findViewById(R.id.button_infotainment);
+                    windowsButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            publishProgress(stage);
+                        }
+                    });
                 } else if (stage == 4) { // Ignition
-
+                    if (ignStatus.equals("off")) {
+                        publishProgress(stage);
+                    }
                 } else if (stage == 5) { // Stuff to pick up (wallet)
-
+                    Button windowsButton = (Button) findViewById(R.id.button_stuff);
+                    windowsButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            publishProgress(stage);
+                        }
+                    });
                 } else if (stage == 6) { // Lock your doors :)
-
-                }*/
+                    Button windowsButton = (Button) findViewById(R.id.button_door_lock);
+                    windowsButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            publishProgress(stage);
+                        }
+                    });
+                }
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
@@ -113,21 +137,54 @@ public class FinisherActivity extends Activity {
             if (values[0] == 0) {
                 View c = findViewById(R.id.park_brake);
                 c.setVisibility(View.GONE);
-                c = findViewById(R.id.headlamp);
+                mp = MediaPlayer.create(getApplicationContext(), R.raw.ping);
+                mp.start();
+                c = findViewById(R.id.headlamp_reminder);
                 c.setVisibility(View.VISIBLE);
                 stage++;
             } else if (values[0] == 1) {
-                View c = findViewById(R.id.headlamp);
+                View c = findViewById(R.id.headlamp_reminder);
                 c.setVisibility(View.GONE);
+                mp = MediaPlayer.create(getApplicationContext(), R.raw.ping);
+                mp.start();
                 c = findViewById(R.id.button_windows);
                 c.setVisibility(View.VISIBLE);
                 stage++;
             } else if (values[0] == 2) {
                 View c = findViewById(R.id.button_windows);
                 c.setVisibility(View.GONE);
+                mp = MediaPlayer.create(getApplicationContext(), R.raw.ping);
+                mp.start();
                 c = findViewById(R.id.button_infotainment);
                 c.setVisibility(View.VISIBLE);
                 stage++;
+            } else if (values[0] == 3) {
+                View c = findViewById(R.id.button_infotainment);
+                c.setVisibility(View.GONE);
+                mp = MediaPlayer.create(getApplicationContext(), R.raw.ping);
+                mp.start();
+                c = findViewById(R.id.ignition_reminder);
+                c.setVisibility(View.VISIBLE);
+                stage++;
+            } else if (values[0] == 4) {
+                View c = findViewById(R.id.ignition_reminder);
+                c.setVisibility(View.GONE);
+                mp = MediaPlayer.create(getApplicationContext(), R.raw.ping);
+                mp.start();
+                c = findViewById(R.id.button_stuff);
+                c.setVisibility(View.VISIBLE);
+                stage++;
+            } else if (values[0] == 5) {
+                View c = findViewById(R.id.button_stuff);
+                c.setVisibility(View.GONE);
+                mp = MediaPlayer.create(getApplicationContext(), R.raw.ping);
+                mp.start();
+                c = findViewById(R.id.button_door_lock);
+                c.setVisibility(View.VISIBLE);
+                stage++;
+            } else if (values[0] == 6) {
+                mp.release();
+                finish();
             }
         }
 
@@ -157,6 +214,18 @@ public class FinisherActivity extends Activity {
         }
     };
 
+    IgnitionStatus.Listener mIgnitionListener = new IgnitionStatus.Listener() {
+        @Override
+        public void receive(Measurement measurement) {
+            final IgnitionStatus ignitionStatus = (IgnitionStatus) measurement;
+            FinisherActivity.this.runOnUiThread(new Runnable() {
+                public void run() {
+                    ignStatus = ignitionStatus.getValue().getSerializedValue();
+                }
+            });
+        }
+    };
+
     private ServiceConnection mConnection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className,
                                        IBinder service) {
@@ -167,6 +236,7 @@ public class FinisherActivity extends Activity {
 
             mVehicleManager.addListener(HeadlampStatus.class, mHeadlampListener);
             mVehicleManager.addListener(ParkingBrakeStatus.class, mParkBrakeListener);
+            mVehicleManager.addListener(IgnitionStatus.class, mIgnitionListener);
         }
 
         public void onServiceDisconnected(ComponentName className) {

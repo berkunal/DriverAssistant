@@ -20,7 +20,7 @@
     <string name="gear_mode">Gear mode status: %1$s</string>
     <string name="headlamp">Headlamp status: %1$b</string>
     <string name="vehicle_speed_info">Vehicle speed: %1$f km/h</string>
-    <string name="vehicle_speed">%1$.1f km/h</string>
+    <string name="vehicle_speed">%1$.1f</string>
     <string name="weather">9 °C </string>
     <string name="handbrake_warning">Release parking brake!</string>
     <string name="safety_warning">Safety Warning!</string>
@@ -34,5 +34,8 @@
     <string name="close_headlamp">Close headlamps</string>
     <string name="windows_reminder">Close the windows, then click here</string>
     <string name="infotainment_reminder">Close the infotainment systems (Radio, mp3 player, etc.), then click here</string>
+    <string name="close_ignition">Turn off the ignition</string>
+    <string name="stuff_reminder">Pick up your stuff(wallet etc.), then click here</string>
+    <string name="door_lock_reminder">Don\'t forget to lock your car after stepping out!\nYou can end your trip by clicking anywhere</string>
 
 </resources>
