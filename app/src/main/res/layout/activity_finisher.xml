@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dim_foreground_material_light"
+    android:animateLayoutChanges="true"
+    tools:context="com.openxc.openxcstarter.FinisherActivity">
+
+    <TextView
+        android:id="@+id/park_brake"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:text="@string/engage_park_brake"
+        android:textColor="@color/accent_material_dark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/headlamp_reminder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:text="@string/close_headlamp"
+        android:textColor="@color/accent_material_dark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/button_windows"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:text="@string/windows_reminder"
+        android:textColor="@color/accent_material_dark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/button_infotainment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:text="@string/infotainment_reminder"
+        android:textColor="@color/accent_material_dark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/ignition_reminder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:text="@string/close_ignition"
+        android:textColor="@color/accent_material_dark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/button_stuff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:text="@string/stuff_reminder"
+        android:textColor="@color/accent_material_dark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/button_door_lock"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:text="@string/door_lock_reminder"
+        android:textColor="@color/accent_material_dark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/alegreya_sans"
+        android:visibility="invisible" />
+
+</android.support.constraint.ConstraintLayout>

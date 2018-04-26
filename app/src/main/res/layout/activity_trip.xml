@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dim_foreground_material_light"
+    android:keepScreenOn="true"
+    tools:context="com.openxc.openxcstarter.TripActivity">
+
+    <TextView
+        android:id="@+id/vehicle_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/sevensd"
+        android:text="@string/vehicle_speed"
+        android:textColor="@color/accent_material_dark"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/end_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/kmperhour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/sevensd"
+        android:text="km/h"
+        android:textColor="@color/accent_material_dark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/vehicle_speed"
+        app:layout_constraintStart_toEndOf="@+id/vehicle_speed"
+        app:layout_constraintTop_toTopOf="@+id/vehicle_speed"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:format24Hour="hh:mm"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="@color/accent_material_dark"
+        android:fontFamily="@font/sevensd"
+        app:layout_constraintBottom_toTopOf="@+id/vehicle_speed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/weather"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="@color/accent_material_dark"
+        android:fontFamily="@font/sevensd"
+        app:layout_constraintBottom_toTopOf="@+id/end_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vehicle_speed" />
+
+    <Button
+        android:id="@+id/end_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_light"
+        android:fontFamily="@font/alegreya_sans"
+        android:text="@string/end_trip"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
